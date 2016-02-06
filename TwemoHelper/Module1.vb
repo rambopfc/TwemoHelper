@@ -18,7 +18,7 @@ Module Module1
             'This Is AllTheFiles "defaultpack" writer
             For Each SingleFile As String In AllTheFiles
                 Using w As StreamWriter = File.AppendText("output.txt")
-                    w.WriteLine("[""" & Path.GetFileName(SingleFile).ToString & """]=""Interface\\AddOns\\twemo\\" & Path.GetFileName(SingleFile).ToString & ":32:32"",")
+                    w.WriteLine("[""" & Path.GetFileName(SingleFile).ToString & """]=""Interface\\AddOns\\twemo\\" & Path.GetFileName(SingleFile).ToString & ":28:28"",")
                     If Array.IndexOf(AllTheFiles, SingleFile) = Array.IndexOf(AllTheFiles, AllTheFiles.Last) Then
                         w.WriteLine("----------------------------------------------------------")
                         w.WriteLine("----------------------------------------------------------")
