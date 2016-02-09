@@ -18,7 +18,7 @@ Module Module1
             'This Is AllTheFiles "defaultpack" writer
             For Each SingleFile As String In AllTheFiles
                 Using w As StreamWriter = File.AppendText("output.txt")
-                    w.WriteLine("[""" & Path.GetFileName(SingleFile).ToString & """]=""Interface\\AddOns\\twemo\\" & Path.GetFileName(SingleFile).ToString & ":28:28"",")
+                    w.WriteLine("[""" & Path.GetFileNameWithoutExtension(SingleFile).ToString & """]=""Interface\\AddOns\\twemo\\" & Path.GetFileName(SingleFile).ToString & ":28:28"",")
                     If Array.IndexOf(AllTheFiles, SingleFile) = Array.IndexOf(AllTheFiles, AllTheFiles.Last) Then
                         w.WriteLine("----------------------------------------------------------")
                         w.WriteLine("----------------------------------------------------------")
@@ -30,6 +30,21 @@ Module Module1
             For Each SingleFile As String In AllTheFiles
                 Using w As StreamWriter = File.AppendText("output.txt")
                     w.WriteLine("[""" & Path.GetFileNameWithoutExtension(SingleFile) & """]=""" & Path.GetFileNameWithoutExtension(SingleFile) & """,")
+                    If Array.IndexOf(AllTheFiles, SingleFile) = Array.IndexOf(AllTheFiles, AllTheFiles.Last) Then
+                        w.WriteLine("----------------------------------------------------------")
+                        w.WriteLine("----------------------------------------------------------")
+                        w.Write("[NUMBERGOESHERE]= {""NAMEGOESHERE"",")
+                    End If
+                End Using
+            Next
+
+            'this is AllTheFiles "dropdown_options" writer"
+            For Each SingleFile As String In AllTheFiles
+                Using w As StreamWriter = File.AppendText("output.txt")
+                    w.Write("""" & Path.GetFileNameWithoutExtension(SingleFile) & """,")
+                    If Array.IndexOf(AllTheFiles, SingleFile) = Array.IndexOf(AllTheFiles, AllTheFiles.Last) Then
+                        w.Write("},")
+                    End If
                 End Using
             Next
 
